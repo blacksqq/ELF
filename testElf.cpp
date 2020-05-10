@@ -79,7 +79,7 @@ typedef struct {
 
 */
 
-// return < 0 Ê§°Ü
+// return < 0 å¤±è´¥
 static int read_elf_header(int fd, Elf_Ehdr *header)
 {
 	int ret = 0;
@@ -109,8 +109,8 @@ static int read_elf_header(int fd, Elf_Ehdr *header)
 	return 0;
 }
 
-// return < 0 Ê§°Ü
-// µ±·µ»Ø³É¹¦ºó£¬Ğèµ÷ÓÃÕßÊÍ·Å*tableÄÚ´æ
+// return < 0 å¤±è´¥
+// å½“è¿”å›æˆåŠŸåï¼Œéœ€è°ƒç”¨è€…é‡Šæ”¾*tableå†…å­˜
 static int read_section_table(int fd, const Elf_Ehdr *header, Elf_Shdr **table)
 {
 	int ret = 0;
@@ -145,8 +145,8 @@ static int read_section_table(int fd, const Elf_Ehdr *header, Elf_Shdr **table)
 	return 0;
 }
 
-// return < 0 Ê§°Ü
-// µ±·µ»Ø³É¹¦ºó£¬Ğèµ÷ÓÃÕßÊÍ·Å*tableÄÚ´æ
+// return < 0 å¤±è´¥
+// å½“è¿”å›æˆåŠŸåï¼Œéœ€è°ƒç”¨è€…é‡Šæ”¾*tableå†…å­˜
 static int read_symbol_table(int fd, const Elf_Shdr *section, Elf_Sym **table)
 {
 	int ret;
@@ -179,8 +179,8 @@ static int read_symbol_table(int fd, const Elf_Shdr *section, Elf_Sym **table)
 }
 
 
-// return < 0 Ê§°Ü
-// µ±·µ»Ø³É¹¦ºó£¬Ğèµ÷ÓÃÕßÊÍ·Å*tableÄÚ´æ
+// return < 0 å¤±è´¥
+// å½“è¿”å›æˆåŠŸåï¼Œéœ€è°ƒç”¨è€…é‡Šæ”¾*tableå†…å­˜
 static int read_string_table(int fd, const Elf_Shdr *section, const char **table)
 {
 	int ret;
@@ -228,8 +228,8 @@ static int get_section_by_name(int fd, const char *section_name, Elf_Shdr *secti
 
 	for (i = 0; i < header.e_shnum; ++i)
 	{
-		// sh_name¸ø³ö½ÚÇøÃû³Æ¡£ÊÇ½ÚÇøÍ·²¿×Ö·û´®±í½ÚÇø
-		//£¨Section Header StringTable Section£©µÄË÷Òı
+		// sh_nameç»™å‡ºèŠ‚åŒºåç§°ã€‚æ˜¯èŠ‚åŒºå¤´éƒ¨å­—ç¬¦ä¸²è¡¨èŠ‚åŒº
+		//ï¼ˆSection Header StringTable Sectionï¼‰çš„ç´¢å¼•
 		if (!strcmp(section_name, &strings[sections[i].sh_name]))
 		{
 			if (NULL != section)
@@ -306,10 +306,6 @@ static int get_section_by_index(int fd, const size_t index, Elf_Shdr *section)
 	return ret;
 }
 
-hook()
-{
-
-}
 
 static int
 callback(struct dl_phdr_info *info, size_t size, void *data)
